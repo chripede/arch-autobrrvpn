@@ -4,6 +4,7 @@
 while true; do
 
 	# reset triggers to negative values
+	autobrr_running="false"
 	privoxy_running="false"
 	microsocks_running="false"
 	ip_change="false"
@@ -15,6 +16,16 @@ while true; do
 
 		# if vpn_ip is not blank then run, otherwise log warning
 		if [[ ! -z "${vpn_ip}" ]]; then
+
+			if ! pgrep -x "autobrr" > /dev/null; then
+				echo "[info] autobrr not running"
+			else
+				autobrr_running="true"
+			fi
+
+			if [[ "${autobrr_running}" == "false" ]]; then
+				source /home/nobody/autobrr.sh
+			fi
 
 			if [[ "${ENABLE_PRIVOXY}" == "yes" ]]; then
 

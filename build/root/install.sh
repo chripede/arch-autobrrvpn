@@ -40,7 +40,7 @@ fi
 ####
 
 # define aur packages
-aur_packages=""
+aur_packages="autobrr-bin"
 
 # call aur install script (arch user repo)
 source aur.sh
@@ -104,7 +104,7 @@ rm /tmp/permissions_heredoc
 ####
 
 cat <<'EOF' > /tmp/envvars_heredoc
-export APPLICATION="privoxy"
+export APPLICATION="autobrr"
 EOF
 
 # replace env vars placeholder string with contents of file (here doc)
